@@ -1,0 +1,19 @@
+diff -r e59e807a91a8 wheel/test/test_tool.py
+--- a/wheel/test/test_tool.py	Mon Sep 23 10:46:53 2013 +0200
++++ b/wheel/test/test_tool.py	Thu Nov 28 13:38:04 2013 +0100
+@@ -3,13 +3,14 @@
+ def test_keygen():    
+     def get_keyring():
+         WheelKeys, keyring = tool.get_keyring()
+-        
+         class WheelKeysTest(WheelKeys):
+             def save(self):
+                 pass
+         
+         class keyringTest:
+             backend = keyring.backend
++            class backends:
++                file = keyring.backends.file
+             @classmethod
+             def get_keyring(cls):
+                 class keyringTest2:

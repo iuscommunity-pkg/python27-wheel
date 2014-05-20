@@ -1,0 +1,11 @@
+diff -r e59e807a91a8 MANIFEST.in
+--- a/MANIFEST.in	Mon Sep 23 10:46:53 2013 +0200
++++ b/MANIFEST.in	Thu Nov 28 12:47:15 2013 +0100
+@@ -1,4 +1,7 @@
+ include wheel/*.txt *.txt *.sh
+ recursive-include wheel/test *.py
++include wheel/test/test-1.0-py2.py3-none-win32.whl
++include wheel/test/headers.dist/header.h
++include wheel/test/pydist-schema.json
+ prune wheel/test/*/dist
+ prune wheel/test/*/build
