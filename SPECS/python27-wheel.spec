@@ -10,13 +10,6 @@ Summary:        A built-package format for Python
 License:        MIT
 URL:            http://bitbucket.org/dholth/wheel/
 Source0:        https://pypi.python.org/packages/source/w/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-# Some test files are not present in tarball, so we include them separately.
-# Upstream pull request to include the files in tarball:
-# https://bitbucket.org/dholth/wheel/pull-request/34 (Patch0 below)
-# (version 0.22 doesn't have a tag, so we're using commit hash to point to the
-#  correct testing wheel)
-Source1:        https://bitbucket.org/dholth/wheel/src/099352e/wheel/test/test-1.0-py2.py3-none-win32.whl
-Source2:        https://bitbucket.org/dholth/wheel/raw/099352e/wheel/test/pydist-schema.json
 Patch0:         wheel-0.22-add-test-files-to-manifest.path
 Patch1:         wheel-0.22-legacy-keyring-compatibility.patch
 Patch2:         wheel-0.22-fix-tests-broken-by-keyring-fix.patch
@@ -63,12 +56,6 @@ This is package contains Python 3 version of the package.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-
-# copy test files in place
-cp %{SOURCE1} %{pypi_name}/test/
-cp %{SOURCE2} %{pypi_name}/test/
-# header files just has to be there, even empty
-touch %{pypi_name}/test/headers.dist/header.h
 
 # remove unneeded shebangs
 sed -ie '1d' %{pypi_name}/{egg2wheel,wininst2wheel}.py
