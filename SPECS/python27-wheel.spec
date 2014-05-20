@@ -9,9 +9,6 @@ Summary:        A built-package format for Python
 License:        MIT
 URL:            http://bitbucket.org/dholth/wheel/
 Source0:        https://pypi.python.org/packages/source/w/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-Patch0:         wheel-0.22-add-test-files-to-manifest.path
-Patch1:         wheel-0.22-legacy-keyring-compatibility.patch
-Patch2:         wheel-0.22-fix-tests-broken-by-keyring-fix.patch
 BuildArch:      noarch
  
 BuildRequires:  python-devel
@@ -33,9 +30,6 @@ compatible install in a way that is very close to the on-disk format.
 %prep
 %setup -q -n %{pypi_name}-%{version}
 
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 # remove unneeded shebangs
 sed -ie '1d' %{pypi_name}/{egg2wheel,wininst2wheel}.py
