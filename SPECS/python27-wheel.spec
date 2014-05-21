@@ -68,5 +68,11 @@ find -name '*.py' -type f -print0 | xargs -0 sed -i '1s|python|&%{pyver}|'
 
 
 %changelog
+* Wed May 21 2014 Carl George <carl.george@rackspace.com> - 0.23.0-1.ius
+- Initial port to IUS
+- Remove patches (merged upstream)
+- Implement python packaging best practicies
+- Disable test suite
+
 * Thu Nov 28 2013 Bohuslav Kabrda <bkabrda@redhat.com> - 0.22.0-1
 - Initial package.
