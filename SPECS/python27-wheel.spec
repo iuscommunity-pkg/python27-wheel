@@ -47,9 +47,9 @@ find -name '*.py' -type f -print0 | xargs -0 sed -i '1s|python|&%{pyver}|'
 
 %install
 %{__python2} setup.py install --optimize 1 --skip-build --root %{buildroot}
-%{__mv} %{_bindir}/egg2wheel{,%{pyver}}
-%{__mv} %{_bindir}/wheel{,%{pyver}}
-%{__mv} %{_bindir}/wininst2wheel{,%{pyver}}
+%{__mv} %{buildroot}%{_bindir}/egg2wheel{,%{pyver}}
+%{__mv} %{buildroot}%{_bindir}/wheel{,%{pyver}}
+%{__mv} %{buildroot}%{_bindir}/wininst2wheel{,%{pyver}}
 
 
 #%check
