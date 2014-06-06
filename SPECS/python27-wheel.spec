@@ -5,12 +5,13 @@
 %global __python2 %{_bindir}/python%{pyver}
 %global python2_sitelib  %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 %global python2_sitearch %(%{__python2} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")
+%global __os_install_post %{__python27_os_install_post}
 %global srcname wheel
 %global src %(echo %{srcname} | cut -c1)
 
 Name:           python%{iusver}-%{srcname}
 Version:        0.23.0
-Release:        1.ius%{?dist}
+Release:        2.ius%{?dist}
 Summary:        A built-package format for Python %{pyver}
 Vendor:         IUS Community Project
 Group:          Development/Libraries
@@ -68,6 +69,9 @@ find -name '*.py' -type f -print0 | xargs -0 sed -i '1s|python|&%{pyver}|'
 
 
 %changelog
+* Fri Jun 06 2014 Carl George <carl.george@rackspace.com> - 0.23.0-2.ius
+- Override __os_install_post to fix .pyc/pyo magic
+
 * Wed May 21 2014 Carl George <carl.george@rackspace.com> - 0.23.0-1.ius
 - Initial port to IUS
 - Remove patches (merged upstream)
