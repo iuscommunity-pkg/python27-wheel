@@ -48,9 +48,7 @@ find -name '*.py' -type f -print0 | xargs -0 sed -i '1s|python|&%{pyver}|'
 
 %install
 %{__python2} setup.py install --optimize 1 --skip-build --root %{buildroot}
-%{__mv} %{buildroot}%{_bindir}/egg2wheel{,%{pyver}}
 %{__mv} %{buildroot}%{_bindir}/wheel{,%{pyver}}
-%{__mv} %{buildroot}%{_bindir}/wininst2wheel{,%{pyver}}
 
 
 #%check
@@ -61,9 +59,7 @@ find -name '*.py' -type f -print0 | xargs -0 sed -i '1s|python|&%{pyver}|'
 
 %files
 %doc LICENSE.txt CHANGES.txt README.txt
-%{_bindir}/egg2wheel%{pyver}
 %{_bindir}/wheel%{pyver}
-%{_bindir}/wininst2wheel%{pyver}
 %{python2_sitelib}/%{srcname}*
 %exclude %{python2_sitelib}/%{srcname}/test
 
@@ -71,6 +67,7 @@ find -name '*.py' -type f -print0 | xargs -0 sed -i '1s|python|&%{pyver}|'
 %changelog
 * Mon Jul 07 2014 Carl George <carl.george@rackspace.com> - 0.24.0-1.ius
 - Latest upstream
+- Remove egg2wheel and wininst2wheel scripts since they are no longer installed by default
 
 * Fri Jun 06 2014 Carl George <carl.george@rackspace.com> - 0.23.0-2.ius
 - Override __os_install_post to fix .pyc/pyo magic
