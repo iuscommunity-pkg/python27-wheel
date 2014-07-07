@@ -10,8 +10,8 @@
 %global src %(echo %{srcname} | cut -c1)
 
 Name:           python%{iusver}-%{srcname}
-Version:        0.23.0
-Release:        2.ius%{?dist}
+Version:        0.24.0
+Release:        1.ius%{?dist}
 Summary:        A built-package format for Python %{pyver}
 Vendor:         IUS Community Project
 Group:          Development/Libraries
@@ -69,6 +69,9 @@ find -name '*.py' -type f -print0 | xargs -0 sed -i '1s|python|&%{pyver}|'
 
 
 %changelog
+* Mon Jul 07 2014 Carl George <carl.george@rackspace.com> - 0.24.0-1.ius
+- Latest upstream
+
 * Fri Jun 06 2014 Carl George <carl.george@rackspace.com> - 0.23.0-2.ius
 - Override __os_install_post to fix .pyc/pyo magic
 
