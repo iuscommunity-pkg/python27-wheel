@@ -10,7 +10,7 @@
 %global src %(echo %{srcname} | cut -c1)
 
 Name:           python%{iusver}-%{srcname}
-Version:        0.25.0
+Version:        0.26.0
 Release:        1.ius%{?dist}
 Summary:        A built-package format for Python %{pyver}
 Vendor:         IUS Community Project
@@ -65,6 +65,9 @@ find -name '*.py' -type f -print0 | xargs -0 sed -i '1s|python|&%{pyver}|'
 
 
 %changelog
+* Mon Oct 05 2015 Carl George <carl.george@rackspace.com> - 0.26.0-1.ius
+- Latest upstream
+
 * Thu Sep 17 2015 Ben Harper <ben.harper@rackspace.com> - 0.25.0-1.ius
 - Latest upstream
 
