@@ -10,14 +10,14 @@
 %global src %(echo %{srcname} | cut -c1)
 
 Name:           python%{iusver}-%{srcname}
-Version:        0.29.0
+Version:        0.30.0
 Release:        1.ius%{?dist}
 Summary:        A built-package format for Python %{pyver}
 Vendor:         IUS Community Project
 Group:          Development/Libraries
 License:        MIT
-URL:            https://bitbucket.org/pypa/wheel
-Source0:        https://pypi.python.org/packages/source/%{src}/%{srcname}/%{srcname}-%{version}.tar.gz
+URL:            https://bitbucket.org/pypa/%{srcname}
+Source0:        https://pypi.io/packages/source/w/wheel/%{srcname}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python%{iusver}-devel
@@ -58,13 +58,20 @@ find -name '*.py' -type f -print0 | xargs -0 sed -i '1s|python|&%{pyver}|'
 
 
 %files
-%doc LICENSE.txt CHANGES.txt README.txt
+%license LICENSE.txt
+%doc CHANGES.txt
 %{_bindir}/wheel%{pyver}
 %{python2_sitelib}/%{srcname}*
-%exclude %{python2_sitelib}/%{srcname}/test
 
 
 %changelog
+* Wed Sep 13 2017 Ben Harper <ben.harper@rackspace.com> - 0.30.0-1.ius
+- Latest upstream
+- update URL
+- update Source0
+- use %license
+- remove README.txt and test directory, removed upstream
+
 * Mon Feb 08 2016 Ben Harper <ben.harper@rackspace.com> - 0.29.0-1.ius
 - Latest upstream
 
